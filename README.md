@@ -52,9 +52,7 @@ The final selected approach balances performance, interpretability, and computat
 ## 📂 Repository Structure
 
 - `NLP_Project.ipynb` — Complete modeling workflow  
-- `nlp_model.pkl` — Final trained model  
-- `tfidf_vectorizer.pkl` — Text transformation object  
-- `requirements.txt` — Dependencies  
+
 
 ---
 
