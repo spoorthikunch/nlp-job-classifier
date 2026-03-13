@@ -1,78 +1,68 @@
-# 🧠 Job Title Prediction using NLP
+# 🔍 NLP Job Title Classification
 
-This project builds a Natural Language Processing (NLP) model to predict job titles based on job description text.
+End-to-end NLP pipeline to classify job titles from job description text.
+Benchmarked 4 modeling approaches — **TF-IDF + Logistic Regression achieved 83% accuracy**, outperforming fine-tuned BERT.
 
-The problem is formulated as a supervised multi-class classification task using machine learning techniques.
+## 📊 Model Comparison Results
 
----
+| Model | Accuracy |
+|---|---|
+| TF-IDF + Logistic Regression ✅ | **~83%** (best) |
+| BERT (bert-base-uncased fine-tuned) | ~79% |
+| TF-IDF + Naive Bayes | ~75% |
+| Word2Vec + Logistic Regression | moderate |
+| LSTM | did not outperform TF-IDF baseline |
 
-## 📌 Problem Statement
+## 🎯 Key Insight
 
-Given a job description, the goal is to predict the corresponding job title.
+**TF-IDF + Logistic Regression outperformed fine-tuned BERT.**
 
-This helps automate resume screening, job classification, and recruitment analytics.
+Why? The dataset is strongly keyword-driven — job descriptions 
+contain highly discriminative words like "Python", "Java", "nurse", 
+"accountant" that directly signal the job title. With limited 
+training data, simpler models generalise better than complex 
+deep learning architectures.
 
----
+> **Model selection must be driven by data characteristics — not model complexity.**
 
-## 🛠 Project Workflow
+## 🛠 Tech Stack
+Python • Scikit-learn • HuggingFace Transformers • PyTorch • 
+TF-IDF • Word2Vec • LSTM • BERT • NLTK • Streamlit
 
-### 1️⃣ Text Preprocessing
-- Lowercasing
-- Removing special characters
-- Tokenization
-- Stopword removal
-- Lemmatization
+## 🔄 Project Workflow
 
-### 2️⃣ Feature Engineering
-- TF-IDF Vectorization
-- Word Embeddings (Word2Vec)
-- Sequence Tokenization (for LSTM)
+**Text Preprocessing:**
+- Lowercase, remove special characters
+- Tokenization and stopword removal
+- Lemmatization using WordNet
 
-### 3️⃣ Models Implemented
-- Multinomial Naive Bayes
-- Logistic Regression
+**Modeling Approaches:**
+- TF-IDF + Naive Bayes (baseline)
+- TF-IDF + Logistic Regression
 - Word2Vec + Logistic Regression
-- LSTM
-- Transformer-based modeling (BERT)
+- LSTM with embedding layers
+- Fine-tuned BERT (bert-base-uncased, 2 epochs, lr 2e-5)
 
----
+**Evaluation Metrics:**
+- Accuracy, Precision, Recall, F1-score
+- Confusion matrix analysis
 
-## 📊 Model Selection
+## 🚀 Run Locally
+```bash
+git clone https://github.com/spoorthikunch/nlp-job-classifier.git
+cd nlp-job-classifier
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
+```
 
-After comparing multiple modeling approaches:
+## 📁 Repository Structure
+- `NLP_Project.ipynb` — Complete modeling workflow
+- `app.py` — Streamlit deployment
+- `requirements.txt` — Dependencies
 
-- Classical ML models performed strong for structured job description data.
-- Logistic Regression with TF-IDF features provided stable and interpretable performance.
-- Deep learning and transformer models were explored for performance comparison and architectural understanding.
-
-The final selected approach balances performance, interpretability, and computational efficiency.
-
----
-
-## 📂 Repository Structure
-
-- `NLP_Project.ipynb` — Complete modeling workflow  
-
-
----
-
-## 🧠 Key Highlights
-
-- End-to-end NLP pipeline
-- Multi-model comparison
-- Feature engineering experiments
-- Deep learning implementation
-- Transformer exploration
-- Real-world text classification use case
-
----
-
-## 🚀 Skills Demonstrated
-
-- Natural Language Processing  
-- Text Preprocessing  
-- Feature Engineering  
-- Machine Learning  
-- Deep Learning (LSTM)  
-- Transformer-based Modeling  
-- Model Evaluation & Selection  
+## 👩‍💻 Author
+Spoorthi G Kunch
+[LinkedIn](https://www.linkedin.com/in/spoorthi-kunch-5a0464286) | 
+[GitHub](https://github.com/spoorthikunch)
